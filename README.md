@@ -49,9 +49,14 @@ It includes a **Wazuh Manager** deployment, multiple **agents** on Windows and L
 - Configured to connect to Wazuh Manager  
 - Monitors system logs, security events, and network activity  
 - Downloaded sysmon, sysmon conf xml file from SwiftOnSecurity
+
 <img src='https://i.imgur.com/A1o177G.png' alt='sysmon xml file'>
 <img src='https://i.imgur.com/c6FwBgM.png' alt='sysmon xml file'>
 
+###Configuring to Forward Sysmon Logs to Wazuh Manager
+- Configured the ossec.conf file in Windows 10 creating an event channel to forward the sysmon logs
+- Restarted the wazuh agent
+<img src='https://i.imgur.com/YZZCB2K.png' alt='ossec'>
 
 ---
 
