@@ -32,7 +32,8 @@ It includes a **Wazuh Manager** deployment, multiple **agents** on Windows and L
 - OS: Ubuntu 22.04  
 - Components: Wazuh Manager, Filebeat, Elasticsearch, Kibana  
 - Installed via automated script (`install-wazuh-manager.sh`)  
-- Handles log collection, alerting, and dashboard visualization  
+- Handles log collection, alerting, and dashboard visualization
+<img src='https://i.imgur.com/BVp8MFB.png' alt='Wazuh Manager'>
 
 ### Wazuh Agents
 - OS: Windows 10 / Windows Server / Linux  
