@@ -1,4 +1,4 @@
-# 🛡️ Wazuh SIEM Lab: Manager & Agents Deployment
+# 🛡️ Wazuh SIEM Lab: Manager & Agents Deployment with Sysmon Installation
 
 This repository documents a **Wazuh Security Information and Event Management (SIEM) lab**, built to simulate a corporate cybersecurity monitoring environment.  
 It includes a **Wazuh Manager** deployment, multiple **agents** on Windows and Linux, and a complete logging, alerting, and dashboard setup.
@@ -39,9 +39,22 @@ It includes a **Wazuh Manager** deployment, multiple **agents** on Windows and L
 - OS: Windows 10 / Windows Server / Linux  
 - Configured to connect to Wazuh Manager  
 - Monitors system logs, security events, and network activity  
-- Installed via automated script (`install-wazuh-agent.sh`)  
+- Installed via automated script (`install-wazuh-agent.sh`)
+<img src='https://i.imgur.com/zZrrsYo.png' alt='Wazuh Agent'>
+<img src='https://i.imgur.com/qISQDmo.png' alt='Wazuh Agent'>
+
+
+### Sysmon
+- OS: Windows 10 
+- Configured to connect to Wazuh Manager  
+- Monitors system logs, security events, and network activity  
+- Downloaded sysmon, sysmon conf xml file from SwiftOnSecurity
+<img src='https://i.imgur.com/A1o177G.png' alt='sysmon xml file'>
+<img src='https://i.imgur.com/c6FwBgM.png' alt='sysmon xml file'>
+
 
 ---
+
 
 ## 🔐 Security Features Practiced
 
