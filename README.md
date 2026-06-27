@@ -1,101 +1,95 @@
-# 🛡️ Wazuh SIEM Lab: Manager & Agents Deployment with Sysmon Installation
+# Wazuh SIEM Deployment Lab
 
-This repository documents a **Wazuh Security Information and Event Management (SIEM) lab**, built to simulate a corporate cybersecurity monitoring environment.  
-It includes a **Wazuh Manager** deployment, multiple **agents** on Windows and Linux, and a complete logging, alerting, and dashboard setup.
+A cybersecurity home lab demonstrating Wazuh SIEM deployment, endpoint agent configuration, Sysmon log collection, and security monitoring workflows.
 
----
+## Project Summary
 
-## 📌 Lab Overview
+This project documents the deployment of a Wazuh-based SIEM lab designed to simulate a small corporate monitoring environment. The lab includes a Wazuh manager, endpoint agents, Windows Sysmon telemetry, log forwarding, and dashboard-based alert review.
 
-- **Wazuh Manager** (central SIEM for log aggregation and alerting)  
-- **Wazuh Agents** deployed on Windows and Linux endpoints  
-- Real-time monitoring for system events, authentication, file integrity, and network activity  
-- Dashboards for visualizing security alerts and trends  
-- Safe environment for **Red Team / Blue Team exercises**  
+The goal is to practise blue-team fundamentals: endpoint visibility, log collection, alerting, and basic detection engineering.
 
----
+## Skills Demonstrated
 
-## 🏗️ Lab Architecture
-[Windows/Linux Agents] ---> [Wazuh Manager] ---> [Elasticsearch + Kibana] ---> [Dashboard]
+- Wazuh manager deployment
+- Wazuh agent installation and enrollment
+- Windows endpoint monitoring
+- Linux endpoint monitoring
+- Sysmon installation and configuration
+- Security log forwarding
+- SIEM dashboard review
+- Alert analysis and documentation
+- Lab-based blue-team practice
 
+## Lab Architecture
 
-- **Agents**: Collect logs and monitor endpoints  
-- **Manager**: Aggregates logs, applies rules, triggers alerts  
-- **Elasticsearch**: Stores event data  
-- **Kibana**: Visualizes logs and alerts  
+```text
+Windows Endpoint   Linux Endpoint
+      |                 |
+      v                 v
+  Wazuh Agents ---> Wazuh Manager ---> Dashboard / Alert Review
+```
 
----
+## Tools and Technologies
 
-## ⚙️ Deployment Details
+| Area | Tools |
+|---|---|
+| SIEM | Wazuh Manager and Wazuh Agents |
+| Endpoint telemetry | Sysmon |
+| Operating systems | Ubuntu, Windows 10, Windows Server, Linux endpoints |
+| Log forwarding | Wazuh agent configuration |
+| Visualisation | Wazuh dashboard stack |
 
-### Wazuh Manager
-- OS: Ubuntu 22.04  
-- Components: Wazuh Manager, Filebeat, Elasticsearch, Kibana  
-- Installed via automated script (`install-wazuh-manager.sh`)  
-- Handles log collection, alerting, and dashboard visualization
-<img src='https://i.imgur.com/BVp8MFB.png' alt='Wazuh Manager'>
+## Deployment Walkthrough
 
-### Wazuh Agents
-- OS: Windows 10 / Windows Server / Linux  
-- Configured to connect to Wazuh Manager  
-- Monitors system logs, security events, and network activity  
-- Installed via automated script (`install-wazuh-agent.sh`)
-<img src='https://i.imgur.com/zZrrsYo.png' alt='Wazuh Agent'>
-<img src='https://i.imgur.com/qISQDmo.png' alt='Wazuh Agent'>
+### 1. Wazuh Manager Deployment
 
+The Wazuh manager was deployed as the central system for log collection, rule processing, and alert generation.
 
-### Sysmon
-- OS: Windows 10 
-- Configured to connect to Wazuh Manager  
-- Monitors system logs, security events, and network activity  
-- Downloaded sysmon, sysmon conf xml file from SwiftOnSecurity
+<img src="https://i.imgur.com/BVp8MFB.png" alt="Wazuh Manager">
 
-<img src='https://i.imgur.com/A1o177G.png' alt='sysmon xml file'>
-<img src='https://i.imgur.com/c6FwBgM.png' alt='sysmon xml file'>
+### 2. Wazuh Agent Deployment
 
-###Configuring to Forward Sysmon Logs to Wazuh Manager
-- Configured the ossec.conf file in Windows 10 creating an event channel to forward the sysmon logs
-- Restarted the wazuh agent
-<img src='https://i.imgur.com/YZZCB2K.png' alt='ossec'>
+Agents were installed on endpoint systems so logs and security events could be sent to the Wazuh manager.
 
----
+<img src="https://i.imgur.com/zZrrsYo.png" alt="Wazuh Agent">
 
+<img src="https://i.imgur.com/qISQDmo.png" alt="Wazuh Agent">
 
-## 🔐 Security Features Practiced
+### 3. Sysmon Installation
 
-- Real-time endpoint monitoring and alerting  
-- Custom rule creation for log analysis  
-- Incident detection and investigation  
-- Visualization of security metrics in dashboards  
-- Centralized management of endpoints  
+Sysmon was installed on the Windows endpoint to improve process and event visibility.
 
----
+<img src="https://i.imgur.com/A1o177G.png" alt="Sysmon configuration">
 
-## 🚀 Future Enhancements
+<img src="https://i.imgur.com/c6FwBgM.png" alt="Sysmon configuration">
 
-- Integrate with Active Directory lab for domain event monitoring  
-- Forward alerts to Slack/Teams  
-- Automate deployment with Ansible  
-- Deploy IDS/IPS for proactive security  
-- Correlate alerts with MITRE ATT&CK framework  
+### 4. Forward Sysmon Logs to Wazuh
 
----
+The endpoint configuration was updated so Sysmon event logs could be forwarded to the Wazuh manager for monitoring and analysis.
 
-## 🛠️ Tools & Technologies
+<img src="https://i.imgur.com/YZZCB2K.png" alt="Wazuh log forwarding configuration">
 
-- **Wazuh Manager & Agents**  
-- **Elasticsearch & Kibana**  
-- **Windows 10 / Windows Server / Linux**  
-- **Sysmon** (for Windows log monitoring)  
-- **Filebeat** (log forwarding)  
+## Security Concepts Practised
 
----
+- Centralised log collection
+- Endpoint visibility
+- Event correlation basics
+- Alert review
+- Windows telemetry collection
+- SIEM deployment fundamentals
+- Blue-team lab documentation
 
-## 🎯 Learning Objectives
+## Key Takeaways
 
-- Implement and deploy a full SIEM solution  
-- Monitor endpoints for security threats  
-- Customize detection rules  
-- Analyze logs and visualize alerts  
-- Practice Red Team and Blue Team exercises in a safe lab  
+- SIEM tools are only useful when endpoints are properly configured to send useful logs.
+- Sysmon improves Windows visibility beyond default event logs.
+- Agent deployment and log forwarding are foundational SOC skills.
+- Documentation helps explain security lab work clearly to recruiters.
 
+## Future Improvements
+
+- Integrate with the Active Directory lab for domain event monitoring.
+- Add MITRE ATT&CK mapping for selected alerts.
+- Add example alerts with investigation notes.
+- Add a detection rule tuning section.
+- Add screenshots showing dashboard alerts and event timelines.
